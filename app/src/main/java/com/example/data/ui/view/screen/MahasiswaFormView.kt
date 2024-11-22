@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.sp
 import com.example.data.R
 
 @Composable
-fun mahasiswaFormView(
+fun MahasiswaFormView(
     onSubmitButtonCliced: (MutableList<String>) -> Unit,
     onBackButtonClicked: () -> Unit
 ){

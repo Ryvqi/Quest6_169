@@ -127,7 +127,12 @@ fun mahasiswaFormView(){
                     Icons.Filled.Person,
                     contentDescription = ""
                 )
-            }
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
+            ),
+            singleLine = true,
         )
 
         Spacer(modifier = Modifier.padding(4.dp))

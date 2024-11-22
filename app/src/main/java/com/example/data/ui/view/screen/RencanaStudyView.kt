@@ -85,13 +85,11 @@ fun RencanaStudyView(
                     color = Color.White
                 )
             }
-            Box {
-                Icon(
-                    Icons.Filled.Notifications,
-                    contentDescription = "",
-                    tint = Color.White
-                )
-            }
+            Icon(
+                Icons.Filled.Notifications,
+                contentDescription = "",
+                tint = Color.White
+            )
         }
         Box(modifier = Modifier.background(
             color = Color.White,

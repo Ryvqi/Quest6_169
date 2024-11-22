@@ -31,7 +31,9 @@ fun SplashView(onMulaiButton: () -> Unit) {
             contentDescription = "",
             modifier = Modifier.size(150.dp))
 
-        Button(onClick = {},
+        Button(onClick = {
+            onMulaiButton()
+        },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(32.dp)) {

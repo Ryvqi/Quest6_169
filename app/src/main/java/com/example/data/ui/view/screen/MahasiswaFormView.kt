@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -39,136 +40,149 @@ import com.example.data.R
 
 @Composable
 fun MahasiswaFormView(
-    onSubmitButtonCliced: (MutableList<String>) -> Unit,
+    onSubmitButton: (MutableList<String>) -> Unit,
     onBackButtonClicked: () -> Unit
-){
-
+) {
     var nim by remember { mutableStateOf("") }
     var nama by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
+    val listData: MutableList<String> = mutableListOf(nim, nama, email)
 
-    var listData: MutableList<String> = mutableListOf(nim, nama, email)
-
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .background(color = colorResource(id = R.color.primary)),
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = colorResource(id = R.color.primary)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.padding(16.dp))
 
-        Row(modifier = Modifier
-            .padding(40.dp),
-            verticalAlignment = Alignment.CenterVertically) {
-            Image(painter = painterResource(id = R.drawable.logo),
-                contentDescription = "")
-        }
+        Image(
+            painter = painterResource(id = R.drawable.logo),
+            contentDescription = "",
+            modifier = Modifier
+                .padding(top = 40.dp)
+                .size(100.dp)
+        )
 
-        Spacer(modifier = Modifier.padding(start = 30.dp))
+        Spacer(modifier = Modifier.padding(8.dp))
 
-        Column {
-            Text(text = "University of Muhammadiyah Yogyakarata",
-                color = Color.Red,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Text(text = "Unggul dan Islami",
-                color = Color.Red,
-                fontWeight = FontWeight.Light
-            )
-        }
-    }
-
-    Box(modifier = Modifier.fillMaxWidth()
-        .background(color = Color.White,
-            shape = RoundedCornerShape(
-                topEnd = 15.dp,
-                topStart = 15.dp
-            )
-        )) {
         Column(
-            modifier = Modifier.padding(20.dp).fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Masukan data kamu",
-                fontWeight = FontWeight.Bold,
-                fontSize = 19.sp
+            Text(
+                text = "Universitas Muhammadiyah Yogyakarta",
+                color = Color.White,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold
             )
-            Text(text = "Isi sesuai data yang kamu daftarkan",
+            Text(
+                text = "Unggul dan Islami",
+                color = Color.White,
                 fontWeight = FontWeight.Light,
-                fontSize = 19.sp
+                fontSize = 14.sp
             )
         }
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(50.dp),
-            value = nim,
-            onValueChange = {nim = it},
-            label = { Text(text = "Nomor Induk Mahasiswa") },
-            leadingIcon = {
-                Icon(
-                    Icons.Filled.Info,
-                    contentDescription = ""
-                )
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Next
-            ),
-            singleLine = true,
-        )
-
-        Spacer(modifier = Modifier.padding(4.dp))
-
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(50.dp),
-            value = nama,
-            onValueChange = {nama = it},
-            label = { Text(text = "Masukan Nama Anda") },
-            leadingIcon = {
-                Icon(
-                    Icons.Filled.Person,
-                    contentDescription = ""
-                )
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Next
-            ),
-            singleLine = true,
-        )
-
-        Spacer(modifier = Modifier.padding(4.dp))
-
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(50.dp),
-            value = email,
-            onValueChange = {email = it},
-            label = { Text(text = "Masukan Email Anda") },
-            leadingIcon = {
-                Icon(
-                    Icons.Filled.Email,
-                    contentDescription = ""
-                )
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Email,
-                imeAction = ImeAction.Next
-            ),
-            singleLine = true,
-        )
 
         Spacer(modifier = Modifier.padding(16.dp))
 
-        Row(modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ){
-            Button(onClick = {onBackButtonClicked()}) {
-                Text(text = "Kembali")
-            }
-            Button(onClick = {onSubmitButtonCliced(listData)}) {
-                Text(text = "Simpan")
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    color = Color.White,
+                    shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
+                )
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Masukkan Data Kamu",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                )
+                Text(
+                    text = "Isi sesuai data yang kamu daftarkan",
+                    fontWeight = FontWeight.Light,
+                    fontSize = 14.sp
+                )
+
+                Spacer(modifier = Modifier.padding(16.dp))
+
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(50.dp),
+                    value = nim,
+                    onValueChange = { nim = it },
+                    label = { Text(text = "Nomor Induk Mahasiswa") },
+                    leadingIcon = {
+                        Icon(Icons.Filled.Info, contentDescription = "")
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number,
+                        imeAction = ImeAction.Next
+                    ),
+                    singleLine = true
+                )
+
+                Spacer(modifier = Modifier.padding(8.dp))
+
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(50.dp),
+                    value = nama,
+                    onValueChange = { nama = it },
+                    label = { Text(text = "Masukkan Nama Anda") },
+                    leadingIcon = {
+                        Icon(Icons.Filled.Person, contentDescription = "")
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Text,
+                        imeAction = ImeAction.Next
+                    ),
+                    singleLine = true
+                )
+
+                Spacer(modifier = Modifier.padding(8.dp))
+
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(50.dp),
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text(text = "Masukkan Email Anda") },
+                    leadingIcon = {
+                        Icon(Icons.Filled.Email, contentDescription = "")
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Email,
+                        imeAction = ImeAction.Done
+                    ),
+                    singleLine = true
+                )
+
+                Spacer(modifier = Modifier.padding(16.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Button(
+                        onClick = { onBackButtonClicked() },
+                        shape = RoundedCornerShape(50.dp)
+                    ) {
+                        Text(text = "Kembali")
+                    }
+                    Button(
+                        onClick = { onSubmitButton(listData) },
+                        shape = RoundedCornerShape(50.dp)
+                    ) {
+                        Text(text = "Simpan")
+                    }
+                }
             }
         }
     }

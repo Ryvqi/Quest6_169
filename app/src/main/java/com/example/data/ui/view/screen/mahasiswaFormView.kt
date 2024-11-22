@@ -35,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.data.R
+import kotlin.math.sin
 
 @Preview(showBackground = true)
 @Composable
@@ -148,7 +149,12 @@ fun mahasiswaFormView(){
                     Icons.Filled.Email,
                     contentDescription = ""
                 )
-            }
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Next
+            ),
+            singleLine = true,
         )
     }
 }

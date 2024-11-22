@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -39,9 +40,11 @@ import androidx.compose.ui.unit.sp
 import com.example.data.R
 import kotlin.math.sin
 
-@Preview(showBackground = true)
 @Composable
-fun mahasiswaFormView(){
+fun mahasiswaFormView(
+    onSubmitButtonCliced: (MutableList<String>) -> Unit,
+    onBackButtonClicked: () -> Unit
+){
 
     var nim by remember { mutableStateOf("") }
     var nama by remember { mutableStateOf("") }
@@ -164,7 +167,12 @@ fun mahasiswaFormView(){
         Row(modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ){
-
+            Button(onClick = {onBackButtonClicked()}) {
+                Text(text = "Kembali")
+            }
+            Button(onClick = {onSubmitButtonCliced(listData)}) {
+                Text(text = "Simpan")
+            }
         }
     }
 }

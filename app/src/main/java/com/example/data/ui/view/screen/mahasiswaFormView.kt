@@ -1,7 +1,9 @@
 package com.example.data.ui.view.screen
 
+import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -156,5 +158,13 @@ fun mahasiswaFormView(){
             ),
             singleLine = true,
         )
+
+        Spacer(modifier = Modifier.padding(16.dp))
+
+        Row(modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ){
+
+        }
     }
 }
